@@ -1,1 +1,1 @@
-# GitCode
+# python学习记录，没什么要紧的
