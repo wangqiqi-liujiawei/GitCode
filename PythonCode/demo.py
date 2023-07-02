@@ -18,10 +18,33 @@
 
 # from helpers import display
 # display('Sample message')
-import os
-from dotenv import load_dotenv
-load_dotenv()
+# import os
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
-password = os.getenv('PASSWORD')
-print(password)
+# password = os.getenv('PASSWORD')
+# print(password)
+import functools
+from colorama import init, Fore
+
+
+init()
+
+
+def color(color):
+    def wrapper(func):
+        @functools.wraps(func)
+        def runner(*args, **kwargs):
+            print(color + 'changing to red')
+            func(*args, **kwargs)
+        return runner
+    return wrapper
+
+
+@color(color=Fore.RED)
+def greeter():
+    print('hello')
+
+
+greeter()
